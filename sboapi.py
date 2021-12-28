@@ -143,11 +143,11 @@ def check_sbo():
   for i in matches:
     now = datetime.now().strftime("%H:%M:%S")
     try:
-      lb("SBO-{}, [{}]:   {} [{}:{}] {}".format(i['id'], i['tournament']['name'], i['team1'], i['score1'], i['score2'], i['team2']))
-      lb(" ")
+      #lb("SBO-{}, [{}]:   {} [{}:{}] {}".format(i['id'], i['tournament']['name'], i['team1'], i['score1'], i['score2'], i['team2']))
+      #lb(" ")
   
       if i['half_index'] == 0:
-        lb("Date: {} Time: {} | First Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute']), i['half_index']))
+        #lb("Date: {} Time: {} | First Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute']), i['half_index']))
       
         fhhdp = fhh(i)
         fhover = fho(i)
@@ -169,7 +169,7 @@ def check_sbo():
       #first half
       elif i['half_index'] == 1:
         
-        lb("Date: {} Time: {} | First Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute']), i['half_index']))
+        #lb("Date: {} Time: {} | First Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute']), i['half_index']))
         
         
         fhhdp = fhh(i)
@@ -191,7 +191,7 @@ def check_sbo():
           
       #2nd half
       elif i['half_index'] == 2:
-        lb("Date: {} Time: {} | 2nd Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute'] + 45), i['half_index']))
+        #lb("Date: {} Time: {} | 2nd Half: {}mins | Half Index: {}".format(DT, str(now),str(i['minute'] + 45), i['half_index']))
         fhhdp = fhh(i)
         fhover = fho(i)
         #FT Hdp
@@ -211,7 +211,7 @@ def check_sbo():
       #half time
       elif i['half_index'] == 5:
         
-        lb("Date: {} Time: {} | HT | Half Index: {}".format(DT, str(now), i['half_index']))
+        #lb("Date: {} Time: {} | HT | Half Index: {}".format(DT, str(now), i['half_index']))
         fhhdp = fhh(i)
         fhover = fho(i)
         #FT Hdp
@@ -229,16 +229,16 @@ def check_sbo():
        
       #other half index except 0,1,2,5
       else: 
-        print("{}mins | {}".format(str(i['minute']), i['half_index']))
+        lb("{}mins | {}".format(str(i['minute']), i['half_index']))
       
     except ValueError: 
-      print("Value Error in general")
+      lb("Value Error in general")
     except KeyError:
-      print("Key Error in general or no half index")
+      lb("Key Error in general or no half index")
 
     # except KeyError:
     #   print("Key Error in general")
-    lb("---"*30)
+    #lb("---"*30)
 
 def db(o, match_id):
     
@@ -357,7 +357,7 @@ def getLastRow(o, match_id, league):
 def tg(msg):
   token = '1132386597:AAFoZ8xPw5rHtZzjX06LlelNzyvT7cUgG7U'
   url = 'https://api.telegram.org/bot' + token + '/sendMessage'
-  data = {'chat_id': '-1001293678720', 'text': msg + " from Azure"}
+  data = {'chat_id': '-1001293678720', 'text': msg + " from Oracle Cloud"}
   requests.post(url, data).json()
 
 def lb(msg):
